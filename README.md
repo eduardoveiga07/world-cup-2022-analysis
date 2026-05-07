@@ -181,10 +181,10 @@ A discrepância entre os achados univariados e multivariados sobre `build_up_sco
 O projeto não para na média entre grupos. Aplica Mann-Whitney U para validação não paramétrica e regressão logística com features padronizadas para inferência multivariada. Cada nível responde a uma pergunta distinta: "há diferença?" → "a diferença é compatível com o acaso?" → "qual o efeito condicional de cada variável?".
 
 ### Escolha justificada de teste não paramétrico
-Mann-Whitney U foi escolhido sobre o t-test porque (a) as métricas não são gaussianas, (b) o tamanho amostral é pequeno (n=128 time-jogos) e (c) o teste é robusto a outliers — frequentes em métricas de futebol como eficiência. Tamanho de efeito reportado via rank-biserial correlation, que oferece interpretação independente do tamanho amostral.
+Mann-Whitney U foi escolhido sobre o t-test porque (a) as métricas não são gaussianas, (b) o tamanho amostral é pequeno (n=128 time-jogos) e (c) o teste é robusto a outliers, frequentes em métricas de futebol como eficiência. Tamanho de efeito reportado via rank-biserial correlation, que oferece interpretação independente do tamanho amostral.
 
 ### Regressão logística com coeficientes padronizados
-As features são z-score-normalizadas antes do ajuste, permitindo comparação direta dos coeficientes. Os odds ratios são reportados com intervalo de confiança 95% — abordagem que privilegia interpretabilidade sobre métricas de classificação como acurácia, mais adequada quando o objetivo é compreensão e não predição.
+As features são z-score-normalizadas antes do ajuste, permitindo comparação direta dos coeficientes. Os odds ratios são reportados com intervalo de confiança 95%, abordagem que privilegia interpretabilidade sobre métricas de classificação como acurácia, mais adequada quando o objetivo é compreensão e não predição.
 
 ### Encapsulamento em funções com responsabilidade única
 Cada etapa do pipeline é uma função independente, com docstring no padrão Google em português. Funções como `extrair_dados_time`, `calcular_eficiencia`, `criar_variavel_resultado`, `teste_mann_whitney` são reutilizáveis e testáveis isoladamente.
@@ -211,7 +211,7 @@ Estrutura `data/raw/` e `data/processed/` segue prática consolidada em ciência
 
 ## Limitações
 
-Os resultados devem ser interpretados considerando que: (i) a amostra é pequena (64 partidas, 128 observações time-jogo) e específica a um torneio eliminatório de seleções, com pouca generalização para futebol de clubes ou ligas regulares; (ii) métricas agregadas não capturam contexto situacional (posse defensiva vs dominante, chutes em pressão vs contra-ataque); (iii) o modelo identifica associações condicionais, não causalidade — fatores não observados como qualidade do plantel podem explicar parte das relações encontradas.
+Os resultados devem ser interpretados considerando que: (1) a amostra é pequena (64 partidas, 128 observações time-jogo) e específica a um torneio eliminatório de seleções, com pouca generalização para futebol de clubes ou ligas regulares; (2) métricas agregadas não capturam contexto situacional (posse defensiva vs dominante, chutes em pressão vs contra-ataque); (3) o modelo identifica associações condicionais, não causalidade, fatores não observados como qualidade do plantel podem explicar parte das relações encontradas.
 
 ---
 
