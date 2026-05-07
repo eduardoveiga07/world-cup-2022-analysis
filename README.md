@@ -2,7 +2,7 @@
 
 ## Visão Geral
 
-Este projeto investiga, com base nos dados oficiais da Copa do Mundo FIFA 2022, quais fatores estatísticos efetivamente diferenciam times vencedores de não vencedores. A análise é estruturada em torno de três dimensões — posse de bola, eficiência ofensiva e construção de jogadas — e parte de uma pergunta clara: a posse de bola, métrica popularmente associada ao desempenho, é de fato um preditor de vitória?
+Este projeto investiga, com base nos dados oficiais da Copa do Mundo FIFA 2022, quais fatores estatísticos efetivamente diferenciam times vencedores de não vencedores. A análise é estruturada em torno de três dimensões: posse de bola, eficiência ofensiva e construção de jogadas, e parte de uma pergunta clara: a posse de bola, métrica popularmente associada ao desempenho, é de fato um preditor de vitória?
 
 A abordagem combina três níveis analíticos: estatística descritiva, testes de significância não paramétricos (Mann-Whitney U) e modelagem inferencial via regressão logística com features padronizadas. Essa estratificação permite distinguir associações observadas no agregado das relações causais condicionais e revelar efeitos que análises univariadas mascaram.
 
@@ -99,7 +99,7 @@ Apenas o subconjunto das variáveis ligadas às três dimensões de análise é 
 
 ### 2. Reestruturação para nível de time
 
-O dataset original armazena cada partida em uma única linha, com colunas espelhadas para `team1` e `team2`. A transformação aplicada gera duas observações por partida — uma para cada time — com nomes padronizados, viabilizando análises por grupo.
+O dataset original armazena cada partida em uma única linha, com colunas espelhadas para `team1` e `team2`. A transformação aplicada gera duas observações por partida (uma para cada time) com nomes padronizados, viabilizando análises por grupo.
 
 ### 3. Limpeza de tipos
 
@@ -150,7 +150,7 @@ Apenas eficiência sobrevive ao teste de significância no recorte univariado.
 
 ### Nível 3 — Modelagem inferencial (regressão logística)
 
-Com features padronizadas, os coeficientes são diretamente comparáveis em magnitude, e a exponencial fornece o **odds ratio** — razão multiplicativa de chance de vitória por desvio-padrão de aumento na variável.
+Com features padronizadas, os coeficientes são diretamente comparáveis em magnitude, e a exponencial fornece o **odds ratio** razão multiplicativa de chance de vitória por desvio-padrão de aumento na variável.
 
 | Variável | Coeficiente | p-valor | Odds ratio |
 |---|---|---|---|
@@ -162,7 +162,7 @@ Pseudo R² de McFadden ≈ 0,16.
 
 A análise multivariada revela dois achados que a descritiva mascara:
 
-1. **Posse de bola tem efeito negativo significante** quando controlada pelas demais variáveis. Mais posse está associada a *menor* chance de vencer — coerente com a hipótese de que posse, em torneios eliminatórios, é frequentemente um indicador de equipes em desvantagem que precisam atacar.
+1. **Posse de bola tem efeito negativo significante** quando controlada pelas demais variáveis. Mais posse está associada a *menor* chance de vencer, coerente com a hipótese de que posse, em torneios eliminatórios, é frequentemente um indicador de equipes em desvantagem que precisam atacar.
 2. **Build-up tem o coeficiente de maior magnitude no modelo**, ainda que não seja significante isoladamente no Mann-Whitney. Isso ilustra como variáveis colineares podem mutuamente mascarar seus efeitos individuais em análises univariadas.
 
 ---
