@@ -37,8 +37,8 @@ A meta secundária é entregar um pipeline reprodutível, com pré-processamento
 ### 1. Clonar o repositório
 
 ```bash
-git clone <url-do-repositorio>
-cd PROJETO_COPA_DO_MUNDO
+git clone https://github.com/eduardoveiga07/world-cup-2022-analysis.git
+cd world-cup-2022-analysis
 ```
 
 ### 2. Criar ambiente virtual (recomendado)
