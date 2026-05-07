@@ -68,7 +68,7 @@ O notebook normaliza automaticamente o diretório de trabalho para a raiz do pro
 ## Estrutura de Arquivos
 
 ```
-PROJETO_COPA_DO_MUNDO/
+world-cup-2022-analysis/
 ├── data/
 │   ├── raw/
 │   │   └── Fifa_world_cup_matches.csv          # Dataset original (uma linha por partida)
